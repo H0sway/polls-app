@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from .models import Question, Choice
 
-class ChoiceInLine(admin.StackedInline):
+class ChoiceInline(admin.TabularInline):
     model = Choice
     extra = 3
 
@@ -12,6 +12,6 @@ class QuestionAdmin(admin.ModelAdmin):
         (None,                  {'fields': ['question_text']}),
         ('Date Information',    {'fields': ['pub_date']}),
     ]
-    inlines = [ChoiceInLine]
+    inlines = [ChoiceInline]
 
 admin.site.register(Question, QuestionAdmin)
